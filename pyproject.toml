@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "zkstats-verifier-api"
+version = "0.1.0"
+description = ""
+authors = ["mhchia <kevin.mh.chia@gmail.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.114.1"
+uvicorn = "^0.30.6"
+pydantic = "^2.9.1"
+requests = "^2.32.3"
+zkstats = "^0.1.11"
+torch = "*"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
