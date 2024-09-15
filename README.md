@@ -40,8 +40,37 @@ The server will be available at `http://localhost:8000`.
 
 ## API Endpoints
 
-- POST `/computation_to_vk`: Generate verification key from computation
-- POST `/verify_proof`: Verify a proof
+### POST `/computation_to_vk`
+
+Generate verification key from computation.
+
+#### Request Body
+
+- `data_shape` (string): JSON string representing the shape of the input data.
+- `computation` (string): The computation function as a string.
+- `settings` (string): JSON string containing the settings.
+- `precal_witness` (string): JSON string containing the precomputed witness.
+
+#### Response
+
+- `verification_key` (string): Base64 encoded verification key.
+- `selected_columns` (array): List of selected column names.
+
+### POST `/verify_proof`
+
+Verify a proof.
+
+#### Request Body
+
+- `proof_json` (string): JSON string containing the proof.
+- `settings_json` (string): JSON string containing the settings.
+- `vk_b64` (string): Base64 encoded verification key.
+- `selected_columns` (array): List of selected column names.
+- `data_commitment_json` (string): JSON string containing the data commitment.
+
+#### Response
+
+- `result` (array): The result of the verification.
 
 For detailed API documentation, visit `http://localhost:8000/docs` when the server is running.
 
