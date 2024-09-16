@@ -13,7 +13,7 @@ Caveat: malicious clients can input arbitrary computation and compromise the ser
 
 1. Clone the repository:
    ```
-   git clone https://github.com/your-username/zkstats-verifier-api.git
+   git clone https://github.com/ZKStats/zkstats-verifier-api.git
    cd zkstats-verifier-api
    ```
 
