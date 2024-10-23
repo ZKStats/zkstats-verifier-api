@@ -6,6 +6,7 @@ import base64
 import sys
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
@@ -13,6 +14,15 @@ from lib import calculate_vk, verify_proof as lib_verify_proof, ExtractComputati
 
 
 app = FastAPI()
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=False,  # Default is False
+    allow_methods=["GET", "POST"],  # Specify the HTTP methods you want to allow
+    allow_headers=["*"],  # Allows all headers
+)
 
 # ### POST `/computation_to_vk`
 
