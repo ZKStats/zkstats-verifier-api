@@ -76,6 +76,8 @@ async def computation_to_vk(request: ComputationToVKRequest):
         })
     except Exception as e:
         print(f"Error: {e}")
+        import traceback
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -95,6 +97,8 @@ async def verify_proof(request: VerifyProofRequest):
             return JSONResponse(content=res_json)
     except Exception as e:
         print(f"Error: {e}")
+        import traceback
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
 
 
