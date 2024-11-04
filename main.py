@@ -64,20 +64,18 @@ async def computation_to_vk(request: ComputationToVKRequest):
                 request.settings,
                 request.precal_witness
             )
+            print("!@# computation_to_vk: 1")
             # Read the verification key file
             with open(vk_path, 'rb') as vk_file:
                 vk_content = vk_file.read()
-
+            print("!@# computation_to_vk: 2")
         # Return the file content and selected columns
         return JSONResponse(content={
             "verification_key": base64.b64encode(vk_content).decode('utf-8'),
             "selected_columns": selected_columns
         })
-    except ExtractComputationFailure as e:
+    except (ExtractComputationFailure, HTTPException) as e:
         raise HTTPException(status_code=400, detail=str(e))
-    except HTTPException as e:
-        # Re-raise HTTPException to preserve status code and detail
-        raise e
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
