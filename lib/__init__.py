@@ -205,8 +205,7 @@ def calculate_vk(
     sel_dummy_data_path = os.path.join(tmp_dir, 'sel_dummy_data.json')
     precal_witness_path = os.path.join(tmp_dir, 'precal_witness.json')
     settings_path = os.path.join(tmp_dir, 'settings.json')
-
-    data_shape = json.loads(data_shape_json)
+    data_shape = {k: int(v) for k, v in json.loads(data_shape_json).items()}
     with open(precal_witness_path, 'w') as precal_witness_file:
         precal_witness_file.write(precal_witness_json)
     with open(settings_path, 'w') as settings_file:
