@@ -186,7 +186,7 @@ def extract_safe_computation(computation_str: str, module_path: str) -> TComputa
 
     except Exception as e:
         print(f"Error while extracting computation: {e}")
-        print(f"Computation: {computation_str}")
+        print(f"Computation: {computation_str!r}")
         raise ExtractComputationFailure from e
 
 
