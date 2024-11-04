@@ -74,9 +74,8 @@ async def computation_to_vk(request: ComputationToVKRequest):
             "verification_key": base64.b64encode(vk_content).decode('utf-8'),
             "selected_columns": selected_columns
         })
-    except (ExtractComputationFailure, HTTPException) as e:
-        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
+        print(f"Error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -95,6 +94,7 @@ async def verify_proof(request: VerifyProofRequest):
             res_json = json.dumps({"result": res})
             return JSONResponse(content=res_json)
     except Exception as e:
+        print(f"Error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 

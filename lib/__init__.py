@@ -21,7 +21,7 @@ def extract_safe_computation(computation_str: str, module_path: str) -> TComputa
     # Define allowed AST node types
     ALLOWED_NODES = (
         ast.Module, ast.FunctionDef, ast.arguments, ast.arg, ast.Load, ast.Store,
-        ast.Name, ast.Subscript, ast.Index, ast.Slice, ast.ExtSlice, ast.Call, ast.Expr, ast.Assign,
+        ast.Name, ast.Sub, ast.Subscript, ast.Index, ast.Slice, ast.ExtSlice, ast.Call, ast.Expr, ast.Assign,
         ast.BinOp, ast.UnaryOp, ast.Return, ast.Num, ast.Constant,
         ast.Attribute, ast.Dict, ast.Tuple, ast.List, ast.Compare,
         ast.If, ast.For, ast.While, ast.With, ast.Pass, ast.Str,
@@ -187,7 +187,7 @@ def extract_safe_computation(computation_str: str, module_path: str) -> TComputa
     except Exception as e:
         print(f"Error while extracting computation: {e}")
         print(f"Computation: {computation_str!r}")
-        raise ExtractComputationFailure from e
+        raise e
 
 
 def calculate_vk(
